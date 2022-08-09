@@ -7,7 +7,7 @@ let EXP = process.env.JWT_EXP;
 
 const generateToken = async (data) => {
   return JWT.sign({ data: data }, JWT_SECRET, {
-    expiresIn: parseInt(EXP),
+    expiresIn: EXP,
   });
 };
 

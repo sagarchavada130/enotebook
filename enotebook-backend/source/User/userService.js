@@ -5,12 +5,14 @@ const User = require("./userModel");
 const UserConstant = require("./userConstant");
 const TokenGenerator = require("../Middleware/jwtAuth");
 
-const addUser = async (data) => {
+const addUser = async (req) => {
   return new Promise(async (resolve, reject) => {
     try {
       let responceData = {};
 
-      let isUserExist = await User.findOne({ email: data.email });
+      let { email, password, name } = req.body;
+
+      let isUserExist = await User.findOne({ email: email });
 
       if (isUserExist) {
         responceData = {
@@ -23,12 +25,12 @@ const addUser = async (data) => {
       } else {
         let salt = await bcrypt.genSalt(10);
 
-        let password = await bcrypt.hash(data.password, salt);
+        let hashPassword = await bcrypt.hash(password, salt);
 
         let saveObj = {
-          name: data.name,
-          email: data.email,
-          password: password,
+          name: name,
+          email: email,
+          password: hashPassword,
         };
 
         let newUser = new User(saveObj);
@@ -65,11 +67,11 @@ const addUser = async (data) => {
   });
 };
 
-const loginUser = async (data) => {
+const loginUser = async (req) => {
   return new Promise(async (resolve, reject) => {
     let responceData = {};
     try {
-      let { email, password } = data;
+      let { email, password } = req.body;
 
       let userData = await User.findOne(
         { email: email },
@@ -125,10 +127,10 @@ const loginUser = async (data) => {
   });
 };
 
-const userDetails = async (data) => {
+const userDetails = async (req) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let userId = data.user._id;
+      let userId = req.user._id;
       let userDetails = await User.findOne({
         _id: mongoose.Types.ObjectId(userId),
       });

@@ -6,7 +6,7 @@ const mongoURL = process.env.MONGO_URL;
 
 const connection = () => {
   mongoose.connect(mongoURL, () => {
-    console.log("Database connection successfully");
+    console.log("-------------- Database connection successfully --------------");
   });
 };
 

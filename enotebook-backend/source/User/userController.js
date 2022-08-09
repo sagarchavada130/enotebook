@@ -3,14 +3,9 @@ const ErrorResHandler = require("../Middleware/errorResHandler");
 const UserConstant = require("./userConstant");
 const UserService = require("./userService");
 
-const getUserList = async (req, res) => {
-  res.send("Hello");
-};
-
 const createUser = async (req, res) => {
   try {
-    let data = req.body;
-    let result = await UserService.addUser(data);
+    let result = await UserService.addUser(req);
 
     SuccessResHandler(res, result);
   } catch (error) {
@@ -27,8 +22,7 @@ const createUser = async (req, res) => {
 
 const userLogin = async (req, res) => {
   try {
-    let data = req.body;
-    let result = await UserService.loginUser(data);
+    let result = await UserService.loginUser(req);
 
     SuccessResHandler(res, result);
   } catch (error) {
