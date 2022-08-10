@@ -36,7 +36,8 @@ const Login = () => {
     }
   };
   return (
-    <div>
+    <div className="container mt-2">
+      <h2>Login to eNotebook</h2>
       <form onSubmit={submitLogin}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">

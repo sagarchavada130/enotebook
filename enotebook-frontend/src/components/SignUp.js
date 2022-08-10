@@ -42,7 +42,8 @@ const SignUp = () => {
     }
   };
   return (
-    <div>
+    <div className="container mt-2">
+      <h2>SignUp to use eNotebook</h2>
       <form onSubmit={submitSignUp}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">

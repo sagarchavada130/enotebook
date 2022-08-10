@@ -1,13 +1,9 @@
 import React, { useContext, useState } from "react";
 import NoteContext from "../context/Notes/NoteContext";
-import AlertContext from "../context/Alert/AlertContext";
 
 const AddNote = () => {
   let noteContextApi = useContext(NoteContext);
-  let alertContextApi = useContext(AlertContext);
-
   let { createNote } = noteContextApi;
-  let { showAlert } = alertContextApi;
 
   let [note, setNote] = useState({
     title: "",

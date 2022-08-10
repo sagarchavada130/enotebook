@@ -4,7 +4,7 @@ import AlertContext from "../context/Alert/AlertContext";
 const Alert = () => {
   let context = useContext(AlertContext);
 
-  let { alert, setAlert, showAlert } = context;
+  let { alert } = context;
 
   const capitalize = (word) => {
     let lower = word.toLowerCase();
