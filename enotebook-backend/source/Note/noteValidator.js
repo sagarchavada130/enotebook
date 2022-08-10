@@ -61,4 +61,8 @@ const deleteNoteValidator = async (req, res, next) => {
   }
 };
 
-module.exports = { createNoteValidator, updateNoteValidator, deleteNoteValidator };
+module.exports = {
+  createNoteValidator,
+  updateNoteValidator,
+  deleteNoteValidator,
+};

@@ -5,7 +5,7 @@ const cors = require("cors");
 const dbConnection = require("./database");
 const route = require("./source/route.js");
 
-const port = 3000;
+const port = process.env.PORT;
 const app = express();
 
 app.use(cors());
@@ -28,5 +28,7 @@ app.use(function (req, res, next) {
 });
 
 app.listen(port, () => {
-  console.log(`-------------- eNotebook app listening on port ${port} --------------`);
+  console.log(
+    `-------------- eNotebook app listening on port ${port} --------------`
+  );
 });
